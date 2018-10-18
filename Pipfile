@@ -1,0 +1,26 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+django-environ = "*"
+structlog = "*"
+sentry-sdk = "*"
+django-debug-toolbar = "*"
+"psycopg2-binary" = "*"
+whitenoise = "*"
+
+[dev-packages]
+black = "*"
+isort = "*"
+"flake8" = "*"
+pytest = "*"
+colorama = "*"
+
+[requires]
+python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
