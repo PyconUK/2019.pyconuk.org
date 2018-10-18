@@ -15,6 +15,7 @@ import os
 import environ
 import sentry_sdk
 import structlog
+from django.contrib.messages import constants
 from sentry_sdk.integrations.django import DjangoIntegration
 
 env = environ.Env()
@@ -154,6 +155,12 @@ structlog.configure(
 
 # Custom User Model
 AUTH_USER_MODEL = "pyconuk.User"
+
+
+# Messages
+# Configure messages error tag to use the value "danger" to work with
+# Bootstraps alerts.
+MESSAGE_TAGS = {constants.ERROR: "danger"}
 
 
 # THIRD PARTY APPS

@@ -15,9 +15,20 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
+from django.contrib.staticfiles.storage import staticfiles_storage
 from django.urls import include, path
+from django.views.generic import RedirectView, TemplateView
 
-urlpatterns = [path("admin/", admin.site.urls)]
+urlpatterns = [
+    path(
+        "favicon.png",
+        RedirectView.as_view(
+            url=staticfiles_storage.url("crown_black.svg"), permanent=False
+        ),
+    ),
+    path("", TemplateView.as_view(template_name="home.html"), name="home"),
+    path("admin/", admin.site.urls),
+]
 
 # Enable Debug Toolbar urls
 if settings.DEBUG:
