@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block jumbotron-title %}Our Sponsors{% endblock %}
+
+{% block breadcrumb-items %}
+{{ block.super }}
+<li class="breadcrumb-item"><a href="{% url 'sponsorship' %}">Sponsorship</a></li>
+<li class="breadcrumb-item" aria-current="page">Our Sponsors</li>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+
+  <div class="col col-12">
+    <div class="card bg-primary text-dark">
+
+      <div class="card-header">
+        <h2>Our headline sponsor</h2>
+      </div>
+
+      <div class="card-body">
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="card bg-warning text-dark">
+
+  <div class="card-header">
+    <h2>Gold</h2>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col col-12 col-lg-6 col-xl-4 align-self-center">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="my-2"></div>
+
+<div class="card bg-danger text-dark">
+
+  <div class="card-header">
+    <h2>Silver</h2>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col col-12 col-md-6 col-lg-4 col-xl-3 align-self-center"></div>
+      <div class="col col-12 col-md-6 col-lg-4 col-xl-3 align-self-center"></div>
+      <div class="col col-12 col-md-6 col-lg-4 col-xl-3 align-self-center"></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="my-2"></div>
+
+<div class="card bg-primary text-dark">
+
+  <div class="card-header">
+    <h2>Bronze</h2>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col col-12 col-md-6 col-lg-4 col-xl-3 align-self-center"></div>
+      <div class="col col-12 col-md-6 col-lg-4 col-xl-3 align-self-center"></div>
+      <div class="col col-12 col-md-6 col-lg-4 col-xl-3 align-self-center"></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="my-2"></div>
+
+<div class="card bg-warning text-dark">
+
+  <div class="card-header">
+    <h2>Special supporters</h2>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col col-12 col-md-6 col-lg-4 align-self-center"></div>
+      <div class="col col-12 col-md-6 col-lg-4 align-self-center"></div>
+      <div class="col col-12 col-md-6 col-lg-4 align-self-center"></div>
+    </div>
+  </div>
+
+</div>
+{% endblock content %}

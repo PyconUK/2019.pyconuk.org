@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block jumbotron-title %}Information for Sponsors{% endblock %}
+
+{% block breadcrumb-items %}
+{{ block.super }}
+<li class="breadcrumb-item"><a href="{% url 'sponsorship' %}">Sponsorship</a></li>
+<li class="breadcrumb-item" aria-current="page">Information for Sponsors</li>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+
+  <div class="col col-12 col-lg-6">
+    <div class="card bg-danger">
+
+      <div class="card-header">
+        <h2>What we need from you</h2>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>the names and email addresses of the people claiming your complimentary tickets</li>
+          <li>the name, email address, and phone number of somebody who'll be at the conference, and who can act as our point of contact</li>
+          <li>a PNG/JPEG logo for the website, width 1068 pixels or larger</li>
+          <li>a URL that you'd like us to share</li>
+          <li>a short (one sentence) description of your company for the website, and a link to your website</li>
+          <li>your Twitter username if you have one</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col col-12 col-lg-6">
+    <div class="card bg-warning">
+
+      <div class="card-header">
+        <h2>Tickets</h2>
+      </div>
+
+      <div class="card-body">
+        <p>All attendees, including those representing sponsors, <strong>must have their own tickets</strong>.</p>
+        <p><a href="{% url 'sponsorship' %}" class="">All sponsorship packages</a> include at least one complimentary ticket, but please ensure your package includes sufficient tickets for all your attendees. You will need to purchase additional tickets if required.</p>
+        <p>Don't hesitate to <a href="{% url 'contact' %}" class="">contact us</a> if you have any questions about this.</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col col-12 col-lg-6">
+    <div class="card bg-primary">
+
+      <div class="card-header">
+        <h2>Materials</h2>
+      </div>
+
+      <div class="card-body">
+        <p>You may arrange to have materials delivered to the venue in advance. Please address all consignments as follows:</p>
+        <p><strong>PyCon UK 2018</strong><br>
+        <strong>&lt;your company's name&gt;</strong><br>
+        Cardiff City Hall<br>
+        Cathays Park<br>
+        Cardiff CF10 3ND</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col col-12 col-lg-6">
+    <div class="card bg-danger">
+
+      <div class="card-header">
+        <h2>Banners</h2>
+      </div>
+
+      <div class="card-body">
+        <p>You need to send or bring any materials, such as banners, that you wish to display or use, and arrange for their collection and return after the event.</p>
+        <p>Except for Platinum or Headline sponsors, your pop-up banners need to be such that they can be safely displayed behind or at the side of your booth space, as in the photograph below, or against a wall.</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="card bg-warning">
+
+  <div class="card-header">
+    <h2>Sponsorship stands in the Marble Hall</h2>
+  </div>
+
+  <div class="card-body">
+
+    <div class="row align-items-center">
+
+      <div class="col col-12 col-lg-6">
+        <p>We will provide you with:</p>
+
+        <ul>
+          <li>a 2×1m table with chairs</li>
+          <li>access to electrical power</li>
+          <li>space behind to sit</li>
+          <li>space behind or to one side for banners.</li>
+        </ul>
+
+        <p><strong>Platinum</strong> sponsors may bring their own, larger, booth equipment.</p>
+      </div>
+
+      <div class="col col-12 col-lg-6">
+        <img src="{% static "img/sponsors-in-the-marble-hall.jpg" %}" class="img-fluid">
+      </div>
+
+    </div>
+
+    <p>You may set up your stand the afternoon or evening before the conference (Friday 14th September, until 20.00).</p>
+    <p>If you prefer, access on the morning of Saturday 15th will be available from 08.00.</p>
+
+  </div>
+
+</div>
+{% endblock content %}

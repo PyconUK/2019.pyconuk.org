@@ -49,6 +49,21 @@ urlpatterns = [
         name="fin-aid",
     ),
     path(
+        "sponsorship",
+        TemplateView.as_view(template_name="sponsorship.html"),
+        name="sponsorship",
+    ),
+    path(
+        "sponsorship/sponsor-information",
+        TemplateView.as_view(template_name="sponsor-information.html"),
+        name="sponsor-information",
+    ),
+    path(
+        "sponsorship/our-sponsors",
+        TemplateView.as_view(template_name="our-sponsors.html"),
+        name="our-sponsors",
+    ),
+    path(
         "travel-and-accommodation",
         TemplateView.as_view(template_name="travel-and-accommodation.html"),
         name="travel-and-accommodation",
