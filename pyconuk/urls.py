@@ -37,6 +37,11 @@ urlpatterns = [
         TemplateView.as_view(template_name="coc_handling_guidelines.html"),
         name="coc-handling-guidelines",
     ),
+    path(
+        "diversity",
+        TemplateView.as_view(template_name="diversity.html"),
+        name="diversity",
+    ),
     path("", TemplateView.as_view(template_name="home.html"), name="home"),
     path("admin/", admin.site.urls),
 ]

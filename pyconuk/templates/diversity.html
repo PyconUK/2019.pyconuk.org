@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block jumbotron-title %}Diversity, Inclusion, Accessbility{% endblock %}
+
+{% block breadcrumb-items %}
+{{ block.super }}
+<li class="breadcrumb-item" aria-current="page">Diversity, Inclusion, Accessbility</li>
+{% endblock %}
+
+{% block content %}
+<p>Each year we make an effort to ensure that PyCon UK is as welcoming, accessible, and inclusive as possible, and try to find new ways to make it even more so.</p>
+
+<h2>Child care <i class="fa fa-child " aria-hidden="true"></i></h2>
+
+<p>PyCon UK will be a friendly environment for parents and babies.</p>
+
+<div class="row">
+  <div class="col">
+
+    <div class="card bg-primary">
+      <div class="card-header"><h3>Free crèche</h3></div>
+
+      <div class="card-body">
+        <div class="row">
+
+          <div class="col col-12 col-md-6 col-lg-6 col-xl-4">
+            <p>We will provide a free crèche, staffed by registered and qualified childminders, during conference hours. </p>
+            <p>You can register for the crèche when registering your tickets. Registration is required in advance, as staff will be booked for the crèche according to the number of registered children.</p>
+            <p>Children will be welcome at all appropriate conference events, during breaks for refreshments and in the audience at talks.</p>
+          </div>
+
+          <div class="col col-12 col-md-6 col-lg-6 col-xl-8">
+            <div class="row">
+              <div class="col col-12 col-lg-12 col-xl-4">
+                <blockquote>
+                  <p>I came for Django Girls and used the crèche for my two kids - thank you so, so much for making me so welcome and helping me out. [...] you really made sure that we had everything we needed, I really appreciated it. Thanks again.</p>
+                </blockquote>
+
+                <p><span class="text-muted">- a parent at PyCon UK 2017.</span></p>
+              </div>
+
+              <div class="col col-12 col-lg-12 col-xl-8">
+                <img src="{% static "img/creche.jpg" %}" class="img-fluid">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="card bg-danger">
+  <div class="card-header"><h3>Feeding your child</h3></div>
+  <div class="card-body">
+    <p>If you are breastfeeding your baby, we can provide a quiet room if that's what you prefer.</p>
+    <p>Otherwise, please breastfeed your baby whenever and wherever you like, including during talks and at meal-times.</p>
+    <p>If your child is old enough to have meals and refreshments with us, they are welcome to join us. If they are not, you will need to provide their food.</p>
+  </div>
+</div>
+
+<h2>Facilities and support for special needs <i class="fa fa-universal-access " aria-hidden="true"></i></h2>
+
+<p>We have provision for people with hearing, vision and mobility requirements. If there is something you need, that's not described below, please let us know so that we can do something about it.</p>
+
+<div class="row">
+  <div class="col col-12 col-xl-4">
+    <div class="card bg-warning">
+      <div class="card-header">
+        <h2>Hearing support <i class="fa fa-assistive-listening-systems " aria-hidden="true"></i></h2>
+      </div>
+
+      <div class="card-body">
+        <p>Talks in the main hall will feature simultaneous speech-to-text transcription.</p>
+        <p>All talks will be held in auditoriums with induction loops for hearing aid users.</p>
+        <p>On request, we will provide a British Sign Language interpreter (at no charge) for the duration of the conference to any Deaf attendees, to help them participate more fully in discussions and social events.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col col-12 col-xl-4">
+    <div class="card bg-primary">
+      <div class="card-header">
+        <h2>Vision support <i class="fa fa-low-vision " aria-hidden="true"></i></h2>
+      </div>
+
+      <div class="card-body">
+        <p>
+        Preferred seating will be provided and reserved for the
+        visually-impaired. Please contact us about any lighting requirements
+        you may have, and we will do our best to meet them.
+        </p>
+        <p>
+        Similarly, if you would benefit from having a close-up display of
+        presenters' slides and screens, or from the provision of any assistive
+        technology, just let us know.
+        </p>
+        <p>Guide dogs are welcome at the conference and social events.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col col-12 col-xl-4">
+    <div class="card bg-danger">
+      <div class="card-header">
+        <h2>Mobility <i class="fa fa-wheelchair " aria-hidden="true"></i></h2>
+      </div>
+
+      <div class="card-body">
+        <p>The PyCon UK venue is fully wheelchair-accessible and has:</p>
+
+        <ul>
+          <li>step-free access from the street and car-parks</li>
+          <li>step-free access to all auditoriums, theatres and halls</li>
+          <li>toilets suitable for wheelchair users.</li>
+        </ul>
+
+        <p>
+        Please contact us about any mobility assistance needs you may have
+        during your stay in Cardiff. We can provide parking at the venue for
+        attendees with mobility needs.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<h2>And also...</h2>
+
+<div class="row">
+
+  <div class="col col-12 col-md-6">
+    <div class="card bg-warning">
+      <div class="card-header">
+        <h2>Dietary requirements</h2>
+      </div>
+
+      <div class="card-body">
+        <p>We aim to meet all dietary requirements.</p>
+        <p>You will be able to specify these when purchasing your ticket.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col col-12 col-md-6">
+    <div class="card bg-primary">
+      <div class="card-header"><h2>Quiet room</h2></div>
+
+      <div class="card-body">
+        <p>
+        We will provide a clearly-marked designated quiet room at the venue.
+        This room is intended to be a calm and quiet place for anyone who needs
+        to have a break from the bustle of the conference, and will not be used
+        for socialising.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col col-12 col-md-6">
+    <div class="card bg-danger">
+      <div class="card-header"><h2>Dress code</h2></div>
+
+      <div class="card-body">
+        <p>
+        At PyCon UK we want everyone to feel comfortable, and that includes
+        wearing clothing that makes you feel comfortable.
+        </p>
+
+        <p>
+        For that reason, PyCon UK does not have a formal dress code. As long as
+        your outfit does not violate the Code of Conduct, you are welcome to
+        wear whatever suits you best.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col col-12 col-md-6">
+    <div class="card bg-warning">
+      <div class="card-header"><h2>Financial assistance</h2></div>
+
+      <div class="card-body">
+        <p>
+        Some attendees will require a financial grant in order to meet the
+        costs of travel, subsistence or even taking days off work. This can
+        include discounted or free conference tickets.
+        </p>
+
+        <p>
+        <strong>Don't be reluctant to apply for a financial grant!</strong>
+        Many conference speakers and members of the committee will be doing the
+        same. The money is there to help <strong>you</strong> if you need it.
+        Please make use of it.
+        </p>
+        <p><a href="/financial-assistance/" class="btn btn-danger">Find out more</a></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock content %}
