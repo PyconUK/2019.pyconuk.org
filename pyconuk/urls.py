@@ -49,6 +49,9 @@ urlpatterns = [
         name="fin-aid",
     ),
     path(
+        "schedule", TemplateView.as_view(template_name="schedule.html"), name="schedule"
+    ),
+    path(
         "sponsorship",
         TemplateView.as_view(template_name="sponsorship.html"),
         name="sponsorship",
