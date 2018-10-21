@@ -29,6 +29,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="nav navbar-nav">
+            <li class="navbar-item child"><a class="nav-link" href="{% url 'coc' %}">Code of Conduct</a>
             {# <li class="nav-item child first active"> #}
             {#     <a href="https://2018.hq.pyconuk.org/" class="nav-link"> #}
             {#         Registration Office #}
@@ -46,11 +47,30 @@
       <header>
         <div class="jumbotron jumbotron-fluid">
           <div class="container">
-            <h1 class="display-3"><strong>PyCon UK 2019</strong></h1>
-            <p class="lead">Cardiff City Hall, Friday 13th to Tuesday 17th September </p>
+            <h1 class="display-3">{% block jumbotron-title %}{% endblock %}</h1>
+            <p class="lead">{% block jumbotron-content %}{% endblock %}</p>
           </div>
         </div>
       </header>
+
+      {% block breadcrumb-snake %}
+      <nav aria-label="breadcrumb" role="navigation" class="container">
+        <svg class="breadcrumb-python" xmlns="http://www.w3.org/2000/svg" width="55" height="82">
+          <g fill="none" fill-rule="evenodd">
+            <path fill="#1073B9" fill-rule="nonzero" d="M54.4 12.1v12.6H27.6v57.2H1V14.6S-1.2 0 28 0c28.1 0 26.4 12.1 26.4 12.1z"></path>
+            <path fill="#FFF" d="M42.9 8.4a4.9 4.9 0 1 0 0 9.7 4.9 4.9 0 0 0 0-9.7z" class="blink"></path>
+          </g>
+        </svg>
+        <ol class="breadcrumb">
+          {% block breadcrumb-items %}
+          <li class="breadcrumb-item">
+            <a href="/">PyCon UK 2019</a>
+          </li>
+          {% endblock breadcrumb-items %}
+          </li>
+        </ol>
+      </nav>
+      {% endblock breadcrumb-snake %}
 
     </div>
 

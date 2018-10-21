@@ -26,6 +26,17 @@ urlpatterns = [
             url=staticfiles_storage.url("crown_black.svg"), permanent=False
         ),
     ),
+    path("coc", TemplateView.as_view(template_name="coc.html"), name="coc"),
+    path(
+        "coc/reporting-guidelines",
+        TemplateView.as_view(template_name="coc_reporting_guidelines.html"),
+        name="coc-reporting-guidelines",
+    ),
+    path(
+        "coc/incident-handling-guidelines",
+        TemplateView.as_view(template_name="coc_handling_guidelines.html"),
+        name="coc-handling-guidelines",
+    ),
     path("", TemplateView.as_view(template_name="home.html"), name="home"),
     path("admin/", admin.site.urls),
 ]
