@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block jumbotron-title %}Contact Us{% endblock %}
+
+{% block breadcrumb-items %}
+{{ block.super }}
+<li class="breadcrumb-item" aria-current="page">Contact</li>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+
+  <div class="col col-12 col-md-6">
+    <div class="card bg-primary">
+
+      <div class="card-header">
+        <h2>Contact PyCon UK</h2>
+      </div>
+
+      <div class="card-body">
+        <p><a href="mailto:pyconuk@uk.python.org" class="btn btn-primary">Email the organising committee</a></p>
+        <p><a href="tel:+442071932840" class="btn btn-warning">Telephone +44 7400 243 043</a></p>
+        <p>Postal address (for correspondence <em>only</em>):</p>
+        <p>9 Aubrey Avenue<br>
+        Cardiff CF5 1AQ<br>
+        United Kingdom</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col col-12 col-md-6">
+    <div class="card bg-danger">
+
+      <div class="card-header">
+        <h2>About the organisers</h2>
+      </div>
+
+      <div class="card-body">
+        <p>PyCon UK is organised entirely by unpaid volunteer members of the Python community in the UK.</p>
+        <p>The conference director of PyCon UK 2019 is <strong>Daniele Procida</strong>.</p>
+        <p>The conference is run by the <strong>PyCon UK Society Ltd</strong>, a non-profit company limited by guarantee, on behalf of the <a href="https://2018.pyconuk.org/ukpa/">UK Python Association</a>, a Charitable Incorporated Organisation registered in England and Wales (No. 1173471)</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col col-12 col-md-6">
+    <div class="card bg-warning">
+
+      <div class="card-header">
+        <h2>PyCon UK Society Ltd</h2>
+      </div>
+
+      <div class="card-body">
+        <p>Company Number: 10073469.</p>
+        <p>Registered in England and Wales.</p>
+        <p>Registered business address:<span style="font-size: 1rem;"></span></p>
+        <p>c/o Acconomy<br>
+        Arena Business Centre<br>
+        Holyrood Close<br>
+        Poole BH17 7FJ<br>
+        United Kingdom</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col col-12 col-md-6">
+    <div class="card bg-primary">
+
+      <div class="card-header">
+        <h2>PyCon UK artwork</h2>
+      </div>
+
+      <div class="card-body">
+        <p>PyCon UK is very grateful for the original and characteristic graphic art produced for us - as it has been for several years - by <a href="https://dev.ngo/" class="">The Developer Society</a>. This includes our website, our logos and designs, and the instantly-recognisable Pythons that grace them.</p>
+        <p>Watch out for more and new Pythons for 2019!</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+{% endblock content %}
