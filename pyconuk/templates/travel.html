@@ -1,0 +1,129 @@
+
+{% extends "base.html" %}
+
+{% block jumbotron-title %}Travel{% endblock %}
+
+{% block breadcrumb-items %}
+{{ block.super }}
+<li class="breadcrumb-item"><a href="{% url 'travel-and-accommodation' %}">Travel & Accommodation</a></li>
+<li class="breadcrumb-item" aria-current="page">Travel</li>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+
+  <div class="col col-12 col-lg-4">
+    <div class="card bg-primary">
+
+      <div class="card-header">
+        <h2>The venue <i class="fa fa-building-o " aria-hidden="true"></i></h2>
+      </div>
+
+      <div class="card-body">
+        <p class="card-text">The full address of our venue is:</p>
+        <p class="card-text">Cardiff City Hall<br>Cathays Park<br>Cardiff CF10 3ND</p>
+        <p class="card-text"><a href="http://cardiffcityhall.com" class="btn btn-warning">Cardiff City Hall's web site</a></p>
+        <p class="card-text">It's very close to the centre of town and the railway station, and to the bus station at Sophia Gardens.</p>
+        <p class="card-text"><a href="https://goo.gl/maps/pwzFBixFyoo" class="btn btn-danger">Map</a></p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col col-12 col-lg-8">
+    <div class="card bg-danger">
+
+      <div class="card-header">
+        <h2>Arriving by train <i class="fa fa-train " aria-hidden="true"></i></h2>
+      </div>
+
+      <div class="card-body">
+        <p class="card-title">Trains to Cardiff arrive right in the city centre, at Cardiff Central railway station. Thanks to our partnership with Cardiff City Council, you'll be able to benefit from discounted Great Western railway fares, especially for peak travel times.</p>
+        <ul>
+          <li class="card-title"><a href="http://tickets.gwr.com/gw/en/landing/promotion.aspx?id=adf113c5-27b0-4c09-9ac2-6db2bcf6b339&amp;isAllowed=False" class="">Visit the GWR website, using this link.</a></li>
+          <li class="card-title">Select <em>Cardiff Conference</em> as your destination.</li>
+          <li class="card-title">Book your journey.</li>
+        </ul>
+
+        <p>Otherwise, rail travel in the UK can be very expensive, especially if you don’t buy your tickets until you travel. In general for cheaper fares, buy your tickets about twelve weeks in advance, when the cheapest Advance Single tickets are released, and note that travel at off-peak times will be cheaper - and that buying two singles can sometimes be cheaper than buying a return ticket.</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col col-12 col-lg-4">
+    <div class="card bg-warning">
+
+      <div class="card-header">
+        <h2>Arriving by bus <i class="fa fa-bus " aria-hidden="true"></i></h2>
+      </div>
+
+      <div class="card-body">
+        <p>Cardiff Central Bus Station is closed until 2020. The main bus station is now at Sophia Gardens.</p>
+        <p>However most if not all services will stop near the city centre, on Castle Street so you shouldn't be inconvenienced (in fact, the Castle Street stop is closer to the venue). Just be aware of where your bus will be arriving and leaving from.</p>
+        <p><a href="http://nationalexpress.com" class="">National Express</a> has some good services to Cardiff, but check for services provided by other lines.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col col-12 col-lg-8">
+    <div class="card bg-danger">
+
+      <div class="card-header">
+        <h2>Arriving by plane <i class="fa fa-plane " aria-hidden="true"></i></h2>
+      </div>
+
+      <div class="card-body">
+        <p class="card-title"><a href="https://www.cardiff-airport.com/" class="">Cardiff's pocket-sized airport</a> has daily flights from several European cities. It's extremely convenient if you can find a flight that lands there. <a href="https://www.cardiff-airport.com/by-bus/" class="">A bus into town (~35 minutes) from the airport</a> is about £5; a taxi (~20 minutes) will be about £30. There's a taxi office in the arrivals hall. Look out for other Pythonistas and share a ride.</p>
+        <p>Bristol Airport is a larger and served by more flights. A <a href="http://nationalexpress.com" class="">National Express</a> bus will take you to the centre of Cardiff in about 1 hour 40 minutes, for about £20.</p>
+        <p>Birmingham Airport is about two hours away by train. The trip requires a change at Birmingham New Street station.</p>
+        <p>Flights from London Heathrow have reasonable connections by bus. Other London airports are further away. <em>Avoid flying to London Stansted or Luton airports unless you have to.</em> Getting from there to Cardiff will be an unrewarding experience.</p>
+        <p>Check flights with <a href="http://skyscanner.net" class="">SkyScanner</a>, <a href="http://hipmunk.com" class="">Hipmunk</a>, or your other favourite tool.</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col col-12 col-lg-6">
+    <div class="card bg-warning">
+
+      <div class="card-header">
+        <h2>Arriving by car <i class="fa fa-car " aria-hidden="true"></i></h2>
+      </div>
+
+      <div class="card-body">
+        <p class="card-title">Unless you must come by car, we'd advise against it. </p>
+        <p class="card-text">There's limited parking in the city centre, and you'll pay for the privilege. There is no general parking for attendees at the venue. </p>
+        <p class="card-text">However, if you need to use a car because of mobility issues, please contact us and we will be able to arrange parking and other assistance.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col col-12 col-lg-6">
+    <div class="card bg-danger">
+
+      <div class="card-header">
+        <h2>Getting around in Cardiff <i class="fa fa-map-signs " aria-hidden="true"></i></h2>
+      </div>
+
+      <div class="card-body">
+        <p>Our venue's very close to the centre of town, and within easy walking distance of nearly all city centre hotels.</p>
+        <p>Cardiff Bus services provide reasonable coverage to the suburbs.</p>
+        <p>Local taxi firms include Premier Taxis, Dragon Taxis and Capital Cabs.</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+{% endblock content %}

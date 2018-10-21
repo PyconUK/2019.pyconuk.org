@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block jumbotron-title %}Accommodation{% endblock %}
+
+{% block breadcrumb-items %}
+{{ block.super }}
+<li class="breadcrumb-item"><a href="{% url 'travel-and-accommodation' %}">Travel & Accommodation</a></li>
+<li class="breadcrumb-item" aria-current="page">Accommodation</li>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+
+  <div class="col col-12 col-md-6">
+    <div class="card bg-primary">
+
+      <div class="card-header">
+        <h2>Discounted hotel accommodation</h2>
+      </div>
+
+      <div class="card-body">
+        <p class="card-title">We have arranged preferential hotel rates through a partnership with Cardiff City Council.</p>
+        <p class="card-title">These rates should be advantageous compared to what you'd otherwise pay for a cancellable, refundable booking.</p>
+        <p class="card-title"><strong>We strongly recommend that you compare them with rates you find through your own research</strong>, which may in some circumstances be better - especially if you'd otherwise opt for a discounted non-refundable booking in the first place.</p>
+        <p class="card-text"><a href="https://book.passkey.com/e/49545932" class="btn btn-primary">To the booking system</a></p>
+      </div>
+
+    </div>
+
+    <div class="card bg-danger">
+      <div class="card-header">
+        <h2>Other hotel booking options</h2>
+      </div>
+
+      <div class="card-body">
+        <p class="card-title">Check sites such as <a href="http://hotels.com/">Hotels.com</a> and <a href="http://booking.com/">Booking.com</a> for hotels.</p>
+        <p>Not all hotels appear on booking sites, so also use general search engines.</p>
+        <p>Don't just search for <em>hotels</em>; also search for <em>B&amp;Bs,</em> for example, on <a href="https://www.google.co.uk/maps/search/B%26B+near+cardiff/@51.4671319,-3.2291182,12z/data=!4m5!2m4!5m3!5m2!1s2017-10-25!2i6">Google Maps</a>.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="col col-12 col-md-6">
+    <div class="card bg-warning">
+
+      <div class="card-header">
+        <h2>Hostel accommodation</h2>
+      </div>
+
+      <div class="card-body">
+        <p>We've been able to reserve a block of rooms and beds at the <a href="http://mrspottsbackpackers.co.uk" class="">Mrs Potts hostel in Cardiff</a>, <strong>exclusively for PyCon UK attendees</strong>. The hostel is in the centre of Cardiff and very convenient for the conference.</p>
+        <p>You are being offered the first chance to secure this accommodation.</p>
+        <p>The accommodation is in four-bed and six-bed dormitories. The dormitories are secure, clean and comfortable. <strong>Last year, 62 of our attendees stayed at the Mrs Potts hostel, and we had extremely good reports</strong>.</p>
+        <p>Rates are £25 for Friday and Saturday nights, and £15 for all other nights - <strong>you won't find a better deal</strong> for your conference accommodation.</p>
+        <p>You'll be able to specify your preferences for a male/female dormitory when you book, or you can book an entire room for a group of friends.</p>
+        <p>To book, <a href="mailto:info@mrspottsbackpackers.co.uk" class="">please email Mrs Potts</a> (don't telephone unless you absolutely have to), and mention that you are attending PyCon UK. Lucy and Jess are our friendly contacts at the hostel, and they will be able to help you.</p>
+        <p>You will need to do this as soon as possible. We expect all the available places to go very quickly.</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+{% endblock content %}

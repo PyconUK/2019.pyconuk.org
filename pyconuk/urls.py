@@ -47,6 +47,21 @@ urlpatterns = [
         TemplateView.as_view(template_name="fin_aid.html"),
         name="fin-aid",
     ),
+    path(
+        "travel-and-accommodation",
+        TemplateView.as_view(template_name="travel-and-accommodation.html"),
+        name="travel-and-accommodation",
+    ),
+    path(
+        "travel-and-accommodation/travel",
+        TemplateView.as_view(template_name="travel.html"),
+        name="travel",
+    ),
+    path(
+        "travel-and-accommodation/accommodation",
+        TemplateView.as_view(template_name="accommodation.html"),
+        name="accommodation",
+    ),
     path("", TemplateView.as_view(template_name="home.html"), name="home"),
     path("admin/", admin.site.urls),
 ]
