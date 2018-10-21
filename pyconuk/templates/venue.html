@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block jumbotron-title %}Venue Information{% endblock %}
+
+{% block breadcrumb-items %}
+{{ block.super }}
+<li class="breadcrumb-item" aria-current="page">Venue Information</li>
+{% endblock %}
+
+{% block content %}
+<p>PyCon UK is held in <a href="https://www.cardiffcityhall.com">Cardiff City Hall</a>. We use conference rooms in both floors of the building.</p>
+
+<p>This page has information about how to get around City Hall, including maps. You can see pictures of all the rooms <a href="https://www.cardiffcityhall.com/rooms/">on the City Hall website</a>.</p>
+
+<h3>Ground floor map</h3>
+<p><img src="{% static "img/ground-floor-labelled.png" %}" class="img-fluid"></p>
+
+<h3>First floor map</h3>
+<p><img src="{% static "img/first-floor-labelled.png" %}" class="img-fluid"></p>
+
+<h3>Toilets</h3>
+<p>Cardiff City Hall has gendered bathrooms on both floors.</p>
+<p>
+We know that not everybody who attends PyCon UK fits into the male/female
+categories. We have non-binary and trans attendees. Please use whichever
+bathroom you feel most comfortable with. If you see another attendee using a
+bathroom which doesn’t look right to you, please leave them be.
+</p>
+
+<h3>Accessible toilets</h3>
+<p>There are accessible toilets on the ground floor, on either side of the entrance to Lower Hall.</p>
+<p>If you have specific needs, please <a href="https://www.cardiffcityhall.com/contact/">contact City Hall</a>.</p>
+
+<h3>Step-free access</h3>
+<p>From street level, there's a wheelchair lift that gives access to the ground floor. There's a lift between the ground floor and the first floor. The lift is to the right of the main entrance.</p>
+<p>Every room except the Ferrier Hall has level access. There are steps at both entrances to the Ferrier Hall, with a stairlift at one entrance – wheelchair access to this room is trickier.</p>
+
+<h3>Quiet room</h3>
+<p>We have the Council Chamber for use as a quiet room throughout the conference (directly opposite the Assembly Hall). If you'd like a quiet space to get away from the hustle and bustle of the conference, it's a quiet space to sit and unwind.</p>
+
+<h3>Help desk</h3>
+<p>If you need any help during the conference, please speak to one of the conference committee (wearing an orange lanyard), or come to the help desk on the ground floor.</p>
+
+<h3>Parking in Cardiff</h3>
+<p>There is no public parking outside City Hall itself.</p>
+<p>If you need to park nearby for mobility reasons, please <a href="https://2018.pyconuk.org/contact/">contact us</a> and we’ll do our best to help.</p>
+<p>For other parking, we suggest you pre-book via <a href="https://www.ncp.co.uk/parking-solutions/cities/cardiff">NCP Cardiff</a>, or make alternative arrangements.</p>
+
+<h3>First Aid</h3>
+<p>If you need First Aid or other medical assistance during the conference, please contact the help desk.</p>
+{% endblock content %}
