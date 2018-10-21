@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block jumbotron-title %}Financial Assistance{% endblock %}
+
+{% block breadcrumb-items %}
+{{ block.super }}
+<li class="breadcrumb-item" aria-current="page">Financial Assistance</li>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+
+  <div class="col col-12 col-md-6 col-lg-8 col-xl-9">
+    <p>
+    Our financial assistance programme exists to support attendees who might
+    otherwise find it difficult to attend the conference. We have a budget set
+    aside for this purpose.
+    </p>
+
+    <p>
+    <strong>The financial assistance programme prioritises speakers.</strong>
+    We also use it to support attendees from groups who are under-represented
+    in our community and at our events, as part of
+    <a href="{% url 'diversity' %}">our efforts to make PyCon UK as inclusive and diverse as possible</a>.
+    </p>
+
+    <p>
+    Last year, PyCon UK was able to provide around £10000 as direct grants, and
+    a further £10000 in free tickets, and we aim to do even better this year.
+    </p>
+
+    <p>
+    <strong style="font-size: 1rem;">We welcome applications from all attendees</strong>
+    <span style="font-size: 1rem;">, and strongly encourage you to apply if it
+      would make it easier for you to attend. Many of your fellow attendees
+      will be doing the same, including many speakers and even members of the
+    conference organisation team.</span>
+    </p>
+
+    <p>
+    Financial assistance includes free or discounted tickets, and funds to
+    cover the costs of travel, accommodation and other expenses.
+    </p>
+
+    <p>
+    We'd love to be able to help all those who submit applications, but our
+    funds are not unlimited, so we can't meet all requests. We do our best to
+    maximise the impact of our financial assistance funding.Whoever you are,
+    however, and whatever your needs,
+    <strong>please do apply if we might be able to help you attend</strong>.
+    Your application will be treated in complete confidence.
+    </p>
+
+    <p>Thanks for applying. We hope we'll be able to help.</p>
+
+    {#<a href="https://2018.hq.pyconuk.org/grants/applications/new" class="btn btn-warning btn-lg btn-block">Apply for financial assistance</a>#}
+
+  </div>
+
+  <div class="col">
+    <div class="card bg-primary">
+
+      <img src="{% static "img/chloe.jpg" %}" class="img-fluid">
+
+      <div class="card-body">
+        <blockquote>
+          <p>
+          I’m Chloe. Last year, my financial situation meant that PyCon UK
+          would have been difficult for me to afford considering my other
+          expenses, so I applied for financial assistance.
+          </p>
+
+          <p>
+          It was great to have a free ticket provided so I could still attend.
+          It was very easy, and I would highly recommend applying.
+          </p>
+        </blockquote>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+{% endblock content %}
