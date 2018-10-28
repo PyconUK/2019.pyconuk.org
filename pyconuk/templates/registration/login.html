@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>Your email address and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+{% if user.is_authenticated %}
+<p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
+{% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+  {% csrf_token %}
+  <input type="hidden" name="next" value="{{ next }}" />
+  <div class="card bg-danger text-dark">
+    <div class="card-header"><h2>Sign in</h2></div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-4">
+          <label>{{ form.username.label }}</label>
+        </div>
+        <div class="col-8">
+          {% bootstrap_field form.username layout='inline' %}
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-4">
+          <label>{{ form.password.label }}</label>
+        </div>
+        <div class="col-8">
+          {% bootstrap_field form.password layout='inline' %}
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col card-text">
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+<p><a href="{% url 'password_reset' %}">Lost password?</a></p><p><a href="{% url 'register' %}">Don't have an account?</a></p>
+
+{% endblock %}
