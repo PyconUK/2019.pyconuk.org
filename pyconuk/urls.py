@@ -76,11 +76,11 @@ urlpatterns = [
         TemplateView.as_view(template_name="travel.html"),
         name="travel",
     ),
-    path(
-        "travel-and-accommodation/accommodation",
-        TemplateView.as_view(template_name="accommodation.html"),
-        name="accommodation",
-    ),
+    # path(
+    #     "travel-and-accommodation/accommodation",
+    #     TemplateView.as_view(template_name="accommodation.html"),
+    #     name="accommodation",
+    # ),
     path("venue", TemplateView.as_view(template_name="venue.html"), name="venue"),
     path("", TemplateView.as_view(template_name="home.html"), name="home"),
     path("admin/", admin.site.urls),
