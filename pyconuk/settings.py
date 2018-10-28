@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
+import functools
 import os
 
 import environ
@@ -17,6 +18,8 @@ import sentry_sdk
 import structlog
 from django.contrib.messages import constants
 from sentry_sdk.integrations.django import DjangoIntegration
+
+from .closing_times import get_closing_time
 
 env = environ.Env()
 
@@ -170,3 +173,9 @@ INTERNAL_IPS = ["127.0.0.1"]
 
 # Sentry
 sentry_sdk.init(dsn=env("SENTRY_DSN", default=None), integrations=[DjangoIntegration()])
+
+
+# PROJECT SETTINGS
+# Closing times
+closing_time = functools.partial(get_closing_time, env)
+BADGE_EDITING_CLOSE_AT = closing_time("BADGE_EDITING_CLOSE_AT")
