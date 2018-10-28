@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+
+{{ form.errors }}
+
+<form method="post" action="{% url 'register' %}" class="form-horizontal">
+  {% csrf_token %}
+  <input type="hidden" name="next" value="{{ next }}" />
+  <div class="card bg-danger text-dark">
+    <div class="card-header"><h2>Sign up</h2></div>
+    <div class="card-body">
+
+      <div class="row">
+        <div class="col-4">
+          <label>{{ form.name.label }}</label>
+        </div>
+        <div class="col-8">
+          {% bootstrap_field form.name layout='inline' %}
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="row">
+        <div class="col-4">
+          <label>{{ form.email.label }}</label>
+        </div>
+        <div class="col-8">
+          {% bootstrap_field form.email layout='inline' %}
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="row">
+        <div class="col-4">
+          <label>{{ form.password1.label }}</label>
+        </div>
+        <div class="col-8">
+          {% bootstrap_field form.password1 layout='inline' %}
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="row">
+        <div class="col-4">
+          <label>{{ form.password2.label }}</label>
+        </div>
+        <div class="col-8">
+          {% bootstrap_field form.password2 layout='inline' %}
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="row">
+        <div class="col">
+          {% bootstrap_field form.agree_terms layout='inline' %}
+          <a href="{% url 'legal' %}">Terms & Conditions and Privacy Policy</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col card-text">
+          <button type="submit" class="btn btn-primary">Create your account</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+{% endblock %}
+

@@ -12,6 +12,7 @@ django-debug-toolbar = "*"
 "psycopg2-binary" = "*"
 whitenoise = "*"
 gunicorn = "*"
+"django-bootstrap4" = "*"
 
 [dev-packages]
 black = "*"
@@ -19,6 +20,7 @@ isort = "*"
 "flake8" = "*"
 pytest = "*"
 colorama = "*"
+ipdb = "*"
 
 [requires]
 python_version = "3.7"

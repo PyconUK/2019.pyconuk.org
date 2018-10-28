@@ -34,7 +34,7 @@ class UserAdmin(admin.ModelAdmin):
                 )
             },
         ),
-        (_("Important dates"), {"fields": ("last_login", "date_joined")}),
+        (_("Important dates"), {"fields": ("last_login", "created_at")}),
     )
     filter_horizontal = ("groups", "user_permissions")
     formfield_overrides = {TextField: {"widget": TextInput(attrs={"size": 40})}}

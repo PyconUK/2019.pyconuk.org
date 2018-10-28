@@ -19,6 +19,8 @@ from django.contrib.staticfiles.storage import staticfiles_storage
 from django.urls import include, path
 from django.views.generic import RedirectView, TemplateView
 
+from .views import Register
+
 urlpatterns = [
     path(
         "favicon.png",
@@ -48,6 +50,7 @@ urlpatterns = [
         TemplateView.as_view(template_name="fin_aid.html"),
         name="fin-aid",
     ),
+    path("legal", TemplateView.as_view(template_name="legal.html"), name="legal"),
     path(
         "schedule", TemplateView.as_view(template_name="schedule.html"), name="schedule"
     ),
@@ -82,6 +85,7 @@ urlpatterns = [
     #     name="accommodation",
     # ),
     path("venue", TemplateView.as_view(template_name="venue.html"), name="venue"),
+    path("register", Register.as_view(), name="register"),
     path("", TemplateView.as_view(template_name="home.html"), name="home"),
     path("admin/", admin.site.urls),
 ]
