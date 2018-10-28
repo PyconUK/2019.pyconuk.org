@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
+from django.contrib.auth.decorators import login_required
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.urls import include, path
 from django.views.generic import RedirectView, TemplateView
 
-from .views import Register
+from .views import ProfileEdit, Register
 
 urlpatterns = [
     path(
@@ -51,6 +52,12 @@ urlpatterns = [
         name="fin-aid",
     ),
     path("legal", TemplateView.as_view(template_name="legal.html"), name="legal"),
+    path(
+        "profile",
+        login_required(TemplateView.as_view(template_name="profile.html")),
+        name="profile",
+    ),
+    path("profile/edit", ProfileEdit.as_view(), name="profile-edit"),
     path(
         "schedule", TemplateView.as_view(template_name="schedule.html"), name="schedule"
     ),

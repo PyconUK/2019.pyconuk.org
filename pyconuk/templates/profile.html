@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="row">
+  <div class="col">
+    {% include '_profile_details.html' %}
+
+    <a href="{% url 'profile-edit' %}" role="button" class="btn btn-primary">Update my profile</a>
+  </div>
+</div>
+{% endblock %}
+
+{% block json_data %}
+var isContributor = "{{ request.user.is_contributor }}" == "True";
+var isOrganiser = "{{ request.user.is_organiser }}" == "True";
+var name = "{{ request.user.name }}";
+var snake = "{{ request.user.badge_snake_colour }}";
+var extras = "{{ request.user.badge_snake_extras }}";
+var company = "{% if request.user.badge_company %}{{ request.user.badge_company }}{% endif %}";
+var twitter = "{% if request.user.badge_twitter %}{{ request.user.badge_twitter }}{% endif %}";
+var pronoun = "{% if request.user.badge_pronoun %}{{ request.user.badge_pronoun }}{% endif %}";
+var ticketRate;
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/badges.js' %}"></script>
+{% endblock %}

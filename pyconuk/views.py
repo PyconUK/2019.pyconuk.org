@@ -1,10 +1,40 @@
+from datetime import datetime
+
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
-from django.urls import reverse
-from django.views.generic import CreateView
+from django.urls import reverse, reverse_lazy
+from django.utils import timezone
+from django.views.generic import CreateView, UpdateView
 
-from .forms import RegisterForm
+from .forms import ProfileForm, RegisterForm
+from .models import User
+
+
+class ProfileEdit(LoginRequiredMixin, UpdateView):
+    form_class = ProfileForm
+    model = User
+    template_name = "profile_edit.html"
+    success_url = reverse_lazy("profile")
+
+    def get_context_data(self, **kwargs):
+        # ticket = self.request.user.ticket
+        # TODO: fix when tickets are implemented
+        ticket = None
+        context = super().get_context_data(**kwargs)
+
+        context["ticket_rate"] = ticket.rate if ticket else ""
+        context["badge_editing_closed"] = (
+            datetime.now(timezone.utc) > settings.BADGE_EDITING_CLOSE_AT
+        )
+
+        return context
+
+    def get_object(self, queryset=None):
+        # TODO: prefetch_related tickets
+        return self.request.user
 
 
 class Register(CreateView):

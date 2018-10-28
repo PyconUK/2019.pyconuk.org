@@ -1,7 +1,114 @@
+from contextlib import suppress
+
 from django import forms
 from django.contrib.auth import password_validation
 
 from .models import User
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = [
+            "name",
+            "email",
+            "has_accessibility_reqs",
+            "accessibility_reqs",
+            "has_childcare_reqs",
+            "childcare_reqs",
+            "has_dietary_reqs",
+            "dietary_reqs",
+            "is_ukpa_member",
+            "dont_ask_demographics",
+            "year_of_birth",
+            "gender",
+            "ethnicity",
+            "ethnicity_free_text",
+            "nationality",
+            "country_of_residence",
+            "badge_company",
+            "badge_twitter",
+            "badge_pronoun",
+            "badge_snake_colour",
+            "badge_snake_extras",
+        ]
+        widgets = {
+            "name": forms.TextInput(),
+            "email": forms.TextInput(),
+            "badge_company": forms.TextInput(attrs={"placeholder": False}),
+            "badge_twitter": forms.TextInput(attrs={"placeholder": False}),
+            "badge_pronoun": forms.TextInput(attrs={"placeholder": False}),
+            "badge_snake_colour": forms.HiddenInput(),
+            "badge_snake_extras": forms.HiddenInput(),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # If user has chosen a gender/nationality/country_of_residence that's
+        # not in the initial list of choices, we add it to the list here so
+        # that they see in in the dropdown when they edit their profile.
+        for key in ["gender", "nationality", "country_of_residence"]:
+            widget = self.fields[key].widget
+            choices = [choice[0] for choice in widget.choices]
+            value = getattr(self.instance, key)
+            if value is not None and value not in choices:
+                widget.choices.insert(1, [value, value])
+
+        # If the user has not bought a ticket, we do not offer UKPA membership.
+        # The option is hidden in the templates, but we also disable the field
+        # here to prevent that control being bypassed by a request sent
+        # directly to the server.
+        # TODO: reinstate tickets
+        # if self.instance.get_ticket() is None:
+        #     self.fields["is_ukpa_member"].disabled = True
+
+    def _post_clean(self):
+        super()._post_clean()
+
+        if self.cleaned_data.get("dont_ask_demographics"):
+            # We don't care abour errors from the demographic fields if user
+            # has selected dont_ask_demographics.
+            for key in [
+                "year_of_birth",
+                "gender",
+                "ethnicity",
+                "ethnicity_free_text",
+                "nationality",
+                "country_of_residence",
+            ]:
+                with suppress(KeyError):
+                    del self._errors[key]
+        else:
+            # If user has chosen a gender/nationality/country_of_residence
+            # that's not in the initial list of choices, Django will raise a
+            # ValidationError, and won't set the corresponding model attribute,
+            # so we remove the error and set the attribute manually.
+            for key in ["gender", "nationality", "country_of_residence"]:
+                with suppress(KeyError):
+                    del self._errors[key]
+
+                if key in self.data:
+                    self.cleaned_data[key] = self.data[key]
+                    setattr(self.instance, key, self.data[key])
+
+    def clean(self):
+        super().clean()
+
+        if self.cleaned_data.get("dont_ask_demographics"):
+            # If user has selected dont_ask_demographics, clear out all
+            # demographic fields so they get cleared on the model instance.
+            for key in [
+                "year_of_birth",
+                "gender",
+                "ethnicity",
+                "ethnicity_free_text",
+                "nationality",
+                "country_of_residence",
+            ]:
+                self.cleaned_data[key] = None
+
+        return self.cleaned_data
 
 
 class RegisterForm(forms.ModelForm):

@@ -1,0 +1,289 @@
+{% extends "base.html" %}
+
+{% load bootstrap4 %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+  <div class="col">
+    <form method="post">
+      {% csrf_token %}
+      <div class="card bg-danger text-dark">
+        <div class="card-header"><h2>Basic information</h2></div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4">
+              <label>Name</label>
+            </div>
+            <div class="col-8">
+              {% bootstrap_field form.name layout='inline' %}
+              <small class="form-text text-muted">This will appear on your conference badge. Required.</small>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-4">
+              <label>Email address</label>
+            </div>
+            <div class="col-8">
+              {% bootstrap_field form.email layout='inline' %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-danger text-dark">
+        <div class="card-header"><h2>Badge Information</h2></div>
+        <div class="card-body">
+          <div class="row">
+            {% if not badge_editing_closed %}
+            <div class="col-8">
+              <div class="row">
+                <div class="col-4">
+                  <label>Select Snake</label>
+                </div>
+                <div class="col-8">
+                  <img src="{% static 'img/snakes/bodies/red.svg' %}" class="snake-body snake-option" data-id="red" width="65px" height="65px"/>
+                  <img src="{% static 'img/snakes/bodies/blue.svg' %}" class="snake-body snake-option" data-id="blue" width="65px" height="65px"/>
+                  <img src="{% static 'img/snakes/bodies/yellow.svg' %}" class="snake-body snake-option" data-id="yellow" width="65px" height="65px"/>
+                  <img src="{% static 'img/snakes/bodies/green.svg' %}" class="snake-body snake-option" data-id="green" width="65px" height="65px"/>
+                  <img src="{% static 'img/snakes/bodies/orange.svg' %}" class="snake-body snake-option" data-id="orange" width="65px" height="65px" />
+                  <img src="{% static 'img/snakes/bodies/purple.svg' %}" class="snake-body snake-option" data-id="purple" width="65px" height="65px"/>
+                  <!--  <img src="/static/accounts/snakes/bodies/grey.svg' %}" class="snake-body snake-option" data-id="grey" width="65px" height="65px"/> -->
+                  {% bootstrap_field form.badge_snake_colour %}
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-4">
+                  <label>Select Accessory</label>
+                </div>
+                <div class="col-8">
+                  <img src="{% static 'img/snakes/deerstalker.svg' %}" class="snake-extras snake-option" data-id="deerstalker" width="65px" height="65px"/>
+                  <img src="{% static 'img/snakes/glasses.svg' %}" class="snake-extras snake-option" data-id="glasses" width="65px" height="65px"/>
+                  <img src="{% static 'img/snakes/dragon.svg' %}" class="snake-extras snake-option" data-id="dragon" width="65px" height="65px"/>
+                  <img src="{% static 'img/snakes/crown.svg' %}" class="snake-extras snake-option" data-id="crown" width="65px" height="65px"/>
+                  <img src="{% static 'img/snakes/mortar.svg' %}" class="snake-extras snake-option" data-id="mortar" width="65px" height="65px"/>
+                  <img src="{% static 'img/snakes/astronaut.svg' %}" class="snake-extras snake-option" data-id="astronaut" width="65px" height="65px" />
+                  <img src="{% static 'img/snakes/bow.svg' %}" class="snake-extras snake-option" data-id="bow" width="65px" height="65px" />
+                  <img src="{% static 'img/snakes/unicorn.svg' %}" class="snake-extras snake-option" data-id="unicorn" width="65px" height="65px" />
+                  <!-- <img src="/static/accounts/snakes/xray.svg' %}" class="snake-extras snake-option" data-id="xray" width="65px" height="65px" /> -->
+                  {% bootstrap_field form.badge_snake_extras %}
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-4">
+                  <label>Company Name</label>
+                </div>
+                <div class="col-8">
+                  {% bootstrap_field form.badge_company layout='inline' %}
+                  <small class="form-text text-muted">The company or organisation you are representing. Optional.</small>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-4">
+                  <label>Pronoun</label>
+                </div>
+                <div class="col-8">
+                  {% bootstrap_field form.badge_pronoun layout='inline' %}
+                  <small class="form-text text-muted">You may choose to display your pronouns on your badge - for example he/him or they/them. Optional. Non-pronouns will not be printed.</small>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-4">
+                  <label>Twitter</label>
+                </div>
+                <div class="col-8">
+                  {% bootstrap_field form.badge_twitter layout='inline' %}
+                  <small class="form-text text-muted">You may choose to display your Twitter username on your badge. This will be prefixed with @. Optional.</small>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col">
+                  <small class="text-muted">Most unicode letters are supported (eg &#321;, &iuml;, &#259;) however graphics and emoji are not.</small>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+            <div class="col-4">
+              <label>Badge Preview</label>
+              <object id="badge" data="{% static 'img/website_badge.svg' %}" type="image/svg+xml" width="100%" style="border: 1px solid black; border-radius: 10px"></object>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-danger text-dark">
+        <div class="card-header"><h2>Requirements</h2></div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4">
+              <label>Do you have any accessibility requirements?</label>
+            </div>
+            <div class="col-8">
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-light{% if form.has_accessibility_reqs.value == True %} active{% endif %}">
+                  <input type="radio" name="has_accessibility_reqs" value="2" {% if form.has_accessibility_reqs.value == True %} checked{% endif %}>Yes
+                </label>
+                <label class="btn btn-light{% if form.has_accessibility_reqs.value == False %} active{% endif %}">
+                  <input type="radio" name="has_accessibility_reqs" value="3" {% if form.has_accessibility_reqs.value == False %} checked{% endif %}>No
+                </label>
+              </div>
+              {% bootstrap_field form.accessibility_reqs layout='inline' placeholder='Please tell us more' %}
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-4">
+              <label>Do you have any childcare requirements?</label>
+            </div>
+            <div class="col-8">
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-light{% if form.has_childcare_reqs.value == True %} active{% endif %}">
+                  <input type="radio" name="has_childcare_reqs" value="2" {% if form.has_childcare_reqs.value == True %} checked{% endif %}>Yes
+                </label>
+                <label class="btn btn-light{% if form.has_childcare_reqs.value == False %} active{% endif %}">
+                  <input type="radio" name="has_childcare_reqs" value="3" {% if form.has_childcare_reqs.value == False %} checked{% endif %}>No
+                </label>
+              </div>
+              {% bootstrap_field form.childcare_reqs layout='inline' placeholder='Please tell us more' %}
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-4">
+              <label>Do you have any dietary requirements?</label>
+            </div>
+            <div class="col-8">
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-light{% if form.has_dietary_reqs.value == True %} active{% endif %}">
+                  <input type="radio" name="has_dietary_reqs" value="2" {% if form.has_dietary_reqs.value == True %} checked{% endif %}>Yes
+                </label>
+                <label class="btn btn-light{% if form.has_dietary_reqs.value == False %} active{% endif %}">
+                  <input type="radio" name="has_dietary_reqs" value="3" {% if form.has_dietary_reqs.value == False %} checked{% endif %}>No
+                </label>
+              </div>
+              {% bootstrap_field form.dietary_reqs layout='inline' placeholder='Please tell us more' %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% if user.get_ticket is not None %}
+      <div class="card bg-danger text-dark">
+        <div class="card-header"><h2>UK Python Association (UKPA)</h2></div>
+        <div class="card-body">
+          <p>You can read more details about the UKPA and becoming a member on the <a href="https://2018.pyconuk.org/ukpa/">conference website</a></p>
+          <div class="row">
+            <div class="col-4">
+              <label>Do you wish to become a member of the UKPA?</label>
+            </div>
+            <div class="col-8">
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-light{% if form.is_ukpa_member.value == True %} active{% endif %}">
+                  <input type="radio" name="is_ukpa_member" value="2" {% if form.is_ukpa_member.value == True %} checked{% endif %}>Yes
+                </label>
+                <label class="btn btn-light{% if form.is_ukpa_member.value == False %} active{% endif %}">
+                  <input type="radio" name="is_ukpa_member" value="3" {% if form.is_ukpa_member.value == False %} checked{% endif %}>No
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+                <small class="form-text text-muted">You must be over the age of 18 to join the UKPA.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="card bg-danger text-dark">
+        <div class="card-header"><h2>Demographics</h2></div>
+        <div class="card-body">
+          <p>All fields are optional, and if you'd prefer not to share this information with us, just click "Don't ask me about this" below.</p>
+          <div class="row">
+            <div class="col-4">
+              <label>Don't ask me about this</label>
+            </div>
+            <div class="col-8">
+              <input type="checkbox" name="dont_ask_demographics" id="id_dont_ask_demographics"{% if form.dont_ask_demographics.value == True %} checked{% endif %} />
+            </div>
+          </div>
+          <hr class="demographics-field">
+          <div class="row demographics-field">
+            <div class="col-4">
+              <label>Year of birth</label>
+            </div>
+            <div class="col-8">
+              {% bootstrap_field form.year_of_birth layout='inline' %}
+            </div>
+          </div>
+          <hr class="demographics-field">
+          <div class="row demographics-field">
+            <div class="col-4">
+              <label>Gender</label>
+            </div>
+            <div class="col-8">
+              {% bootstrap_field form.gender layout='inline' %}
+              <input type="text" maxlength="100" class="form-control" placeholder="Please specify" id="id_gender_free_text" />
+            </div>
+          </div>
+          <hr class="demographics-field">
+          <div class="row demographics-field">
+            <div class="col-4">
+              <label>Ethnicity</label>
+            </div>
+            <div class="col-8">
+              {% bootstrap_field form.ethnicity layout='inline' %}
+              {% bootstrap_field form.ethnicity_free_text layout='inline' %}
+            </div>
+          </div>
+          <hr class="demographics-field">
+          <div class="row demographics-field">
+            <div class="col-4">
+              <label>Nationality</label>
+            </div>
+            <div class="col-8">
+              {% bootstrap_field form.nationality layout='inline' %}
+              <input type="text" maxlength="100" class="form-control" placeholder="Please specify" id="id_nationality_free_text" />
+            </div>
+          </div>
+          <hr class="demographics-field">
+          <div class="row demographics-field">
+            <div class="col-4">
+              <label>Country of residence</label>
+            </div>
+            <div class="col-8">
+              {% bootstrap_field form.country_of_residence layout='inline' %}
+              <input type="text" maxlength="100" class="form-control" placeholder="Please specify" id="id_country_of_residence_free_text" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Update my profile</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block json_data %}
+var isContributor = "{{ request.user.is_contributor }}" == "True";
+var isOrganiser = "{{ request.user.is_organiser }}" == "True";
+var name = "{{ request.user.name }}";
+var snake = "{{ request.user.badge_snake_colour }}";
+var extras = "{{ request.user.badge_snake_extras }}";
+var company = "{% if request.user.badge_company %}{{ request.user.badge_company }}{% endif %}";
+var twitter = "{{ request.user.badge_twitter }}";
+var pronoun = "{{ request.user.badge_pronoun }}";
+var ticketRate = "{{ ticket_rate }}";
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/badges.js' %}"></script>
+<script src="{% static 'js/profile_form.js' %}"></script>
+{% endblock %}

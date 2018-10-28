@@ -696,3 +696,177 @@ figcaption {
 .swot {
     top: -4.3em;
 }
+
+/* Imported from ironcage.css */
+form label {
+  font-weight: bold;
+}
+form label.btn {
+  font-weight: normal;
+}
+.field-name {
+  font-weight: bold;
+}
+
+input[type='checkbox'] {
+  position: relative;
+  top: -2px;
+}
+
+.btn-group-toggle.is-invalid~.invalid-feedback {
+    display: block;
+}
+
+div.is-invalid > .invalid-feedback {
+    display: block;
+}
+
+#price-table tr:first-child td, #price-table tr td:first-child {
+    font-weight: bold;
+}
+
+#price-table tr td:first-child {
+    width: 25%;
+}
+
+.snake-option {
+  cursor: pointer;
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin-bottom: 4px;
+}
+
+.snake-option.selected {
+  border: 3px solid red;
+}
+
+.schedule-table {
+  font-family: Futura;
+  font-size: 0.75em;
+}
+
+.schedule-table td {
+  border: 1px solid grey;
+  font-family: Futura;
+}
+
+.schedule-table tr {
+  height: 8em;
+}
+
+.schedule-table tr td p:last-of-type {
+  margin-bottom: 0;
+}
+
+.schedule-table .break {
+  background-color: #1073b9;
+  color: white;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 1.25em;
+}
+
+.schedule-table .no-session {
+  background-color: #333;
+  border: none;
+}
+
+.schedule-table tr td:last-child.no-session {
+  border-right: 1px solid grey;
+}
+
+.schedule-table thead th, .schedule-table th {
+  border: 1px solid grey;
+  text-align: center;
+  font-family: Futura-Bold;
+}
+
+.schedule-table thead th {
+  vertical-align: middle;
+}
+
+.schedule-table thead tr {
+  height: 4em;
+}
+
+.schedule-table .presenter-name,
+.schedule-table .presenter-name a,
+.proposal-type {
+  color: #999;
+  font-size: 0.9em;
+}
+
+.schedule-table .track-name, {
+  font-size: 0.9em;
+}
+
+.schedule-table td {
+  position: relative;
+}
+
+.schedule-table td .fa {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  cursor: pointer;
+}
+
+.schedule-table td a {
+  color: #000;
+}
+
+.schedule-table .collapsed-table {
+  display: none;
+}
+
+.selectable-schedule.selected {
+  background-color: rgba(254, 203, 47, 0.5);
+}
+
+@media screen and (max-width: 800px) {
+  .schedule-table td, .schedule-table th, .schedule-table tr {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .schedule-table .no-session, .schedule-table thead, .schedule-table .time {
+    display: none;
+  }
+
+  .schedule-table tr {
+    margin-bottom: 1em;
+  }
+
+  .schedule-table .collapsed-table {
+    display: block;
+  }
+
+  .schedule-table .room {
+    font-family: Futura-Bold;
+  }
+
+  .schedule-table .end-time {
+    color: #999;
+  }
+}
+
+.proposal-names {
+  font-family: Futura;
+}
+
+p.proposal-slots {
+  font-family: Futura;
+  color: #999;
+  font-size: 0.75em;
+}
+
+.proposal-subtitle {
+  color: #999;
+  margin-top: 0;
+}
+
+/* hacks */
+#id_agree_terms + label {
+    margin-left: 10px;
+}

@@ -1,0 +1,194 @@
+{% load static %}
+
+<div class="row">
+  <div class="col-8">
+    <div class="card bg-danger text-dark">
+
+      <div class="card-header"><h2>Basic information</h2></div>
+
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <div class="row">
+
+              <div class="col-4 field-name">Name</div>
+              <div class="col-8">{{ user.name }}</div>
+
+            </div>
+
+            <hr />
+
+            <div class="row">
+              <div class="col-4 field-name">Email</div>
+              <div class="col-8">{{ user.email }}</div>
+            </div>
+
+            <hr />
+
+            <div class="row">
+              <div class="col-4 field-name">Company</div>
+              <div class="col-8">{{ user.badge_company }}</div>
+            </div>
+
+            <hr />
+
+            <div class="row">
+              <div class="col-4 field-name">Twitter</div>
+              <div class="col-8">{{ user.badge_twitter }}</div>
+            </div>
+
+            <hr />
+
+            <div class="row">
+              <div class="col-4 field-name">Pronoun</div>
+              <div class="col-8">{{ user.badge_pronoun }}</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <div class="card bg-danger text-dark">
+      <div class="card-header"><h2>Badge Preview</h2></div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <object id="badge" data="{% static 'img/website_badge.svg' %}" type="image/svg+xml" width="100%" style="border: 1px solid black; border-radius: 10px"></object>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card bg-danger text-dark">
+  <div class="card-header"><h2>Requirements</h2></div>
+  <div class="card-body">
+    <div class="row">
+
+      <div class="col-4 field-name">Accessibility</div>
+      <div class="col-8">
+        {% if user.has_accessibility_reqs == None %}
+        unknown
+        {% elif user.has_accessibility_reqs %}
+        {{ user.accessibility_reqs }}
+        {% else %}
+        none
+        {% endif %}
+      </div>
+
+    </div>
+
+    <hr />
+
+    <div class="row">
+      <div class="col-4 field-name">Childcare</div>
+      <div class="col-8">
+        {% if user.has_childcare_reqs == None %}
+        unknown
+        {% elif user.has_childcare_reqs %}
+        {{ user.childcare_reqs }}
+        {% else %}
+        none
+        {% endif %}
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-4 field-name">Dietary</div>
+      <div class="col-8">
+        {% if user.has_dietary_reqs == None %}
+        unknown
+        {% elif user.has_dietary_reqs %}
+        {{ user.dietary_reqs }}
+        {% else %}
+        none
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if user.get_ticket is not None %}
+<div class="card bg-danger text-dark">
+  <div class="card-header"><h2>UK Python Association</h2></div>
+  <div class="card-body">
+    <div class="row">
+
+      <div class="col-4 field-name">Membership</div>
+
+      <div class="col-8">
+        {% if user.is_ukpa_member == None %}
+        unknown
+        {% elif user.is_ukpa_member %}
+        Yes
+        {% else %}
+        No
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<div class="card bg-danger text-dark">
+  <div class="card-header"><h2>Demographics</h2></div>
+  <div class="card-body">
+    {% if user.dont_ask_demographics %}
+    <p>You have opted not to share demographic information with us.</p>
+    {% else %}
+    <div class="row">
+      <div class="col-4 field-name">
+        Year of birth
+      </div>
+      <div class="col-8">
+        {{ user.year_of_birth|default:"unknown" }}
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-4 field-name">
+        Gender
+      </div>
+      <div class="col-8">
+        {{ user.gender|default:"unknown" }}
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-4 field-name">
+        Ethnicity
+      </div>
+      <div class="col-8">
+        {% if 'please describe' in user.ethnicity %}
+        {{ user.ethnicity_free_text }}
+        {% else %}
+        {{ user.ethnicity|default:"unknown" }}
+        {% endif %}
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-4 field-name">
+        Nationality
+      </div>
+      <div class="col-8">
+        {{ user.nationality|default:"unknown" }}
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-4 field-name">
+        Country of residence
+      </div>
+      <div class="col-8">
+        {{ user.country_of_residence|default:"unknown" }}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
