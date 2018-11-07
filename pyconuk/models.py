@@ -1,11 +1,7 @@
-import json
-import os
 import random
 
-from django.conf import settings
 from django.contrib.auth.models import (
     AbstractBaseUser,
-    BaseUserManager,
     PermissionsMixin,
     _user_has_module_perms,
     _user_has_perm,
@@ -13,75 +9,14 @@ from django.contrib.auth.models import (
 from django.db import models
 from django.utils import timezone
 
-# https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations
-with open(os.path.join(settings.BASE_DIR, "data", "countries.txt")) as f:
-    countries = [line.strip() for line in f]
-    COUNTRY_CHOICES = (
-        [["not shared", "prefer not to say"]]
-        + [[country, country] for country in countries]
-        + [["other", "not listed here (please specify)"]]
-    )
-
-
-# https://en.wikipedia.org/wiki/List_of_adjectival_and_demonymic_forms_for_countries_and_nations
-with open(os.path.join(settings.BASE_DIR, "data", "nationalities.txt")) as f:
-    nationalities = (line.strip() for line in f)
-    NATIONALITY_CHOICES = (
-        [["not shared", "prefer not to say"]]
-        + [[nationality, nationality] for nationality in nationalities]
-        + [["other", "not listed here (please specify)"]]
-    )
-
-
-# https://www.ons.gov.uk/ons/guide-method/harmonisation/primary-set-of-harmonised-concepts-and-questions/ethnic-group.pdf
-with open(os.path.join(settings.BASE_DIR, "data", "ethnicities.json")) as f:
-    ethnicities = json.load(f)
-    ETHNICITY_CHOICES = [["not shared", "prefer not to say"]] + [
-        [ethnicity_category, [[ethnicity, ethnicity] for ethnicity in ethnicities]]
-        for ethnicity_category, ethnicities in ethnicities
-    ]
-
-GENDER_CHOICES = [
-    ["not shared", "prefer not to say"],
-    ["female", "female"],
-    ["male", "male"],
-    ["other", "please specify"],
-]
-
-YEAR_OF_BIRTH_CHOICES = [["not shared", "prefer not to say"]] + [
-    [str(year), str(year)] for year in range(1917, 2017)
-]
-
-
-class UserManager(BaseUserManager):
-    def _create_user(self, email, password, **extra_fields):
-        """
-        Create and save a user with the given username, email, and password.
-        """
-        if not email:
-            raise ValueError("The given email must be set")
-        email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
-
-    def create_user(self, email, password=None, **extra_fields):
-        extra_fields.setdefault("is_staff", False)
-        extra_fields.setdefault("is_superuser", False)
-        return self._create_user(email, password, **extra_fields)
-
-    def create_superuser(self, email, password, **extra_fields):
-        extra_fields.setdefault("is_staff", True)
-        extra_fields.setdefault("is_superuser", True)
-
-        if extra_fields.get("is_staff") is not True:
-            raise ValueError("Superuser must have is_staff=True.")
-
-        if extra_fields.get("is_superuser") is not True:
-            raise ValueError("Superuser must have is_superuser=True.")
-
-        return self._create_user(email, password, **extra_fields)
+from .choices import (
+    COUNTRY_CHOICES,
+    ETHNICITY_CHOICES,
+    GENDER_CHOICES,
+    NATIONALITY_CHOICES,
+    YEAR_OF_BIRTH_CHOICES,
+)
+from .managers import UserManager
 
 
 class User(AbstractBaseUser, PermissionsMixin):
