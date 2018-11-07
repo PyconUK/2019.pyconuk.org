@@ -14,7 +14,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf import settings
-from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.urls import include, path
@@ -51,6 +50,7 @@ urlpatterns = [
         TemplateView.as_view(template_name="diversity.html"),
         name="diversity",
     ),
+    path("inspector/", include("inspector.urls")),
     path(
         "financial-assistance",
         TemplateView.as_view(template_name="fin_aid.html"),
@@ -101,7 +101,6 @@ urlpatterns = [
     path("register", Register.as_view(), name="register"),
     path("", include("django.contrib.auth.urls")),
     path("", TemplateView.as_view(template_name="home.html"), name="home"),
-    path("admin/", admin.site.urls),
 ]
 
 # Enable Debug Toolbar urls

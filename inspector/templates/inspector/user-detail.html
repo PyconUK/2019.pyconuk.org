@@ -1,0 +1,51 @@
+{% extends "inspector/base.html" %}
+
+{% load humanize %}
+
+{% block breadcrumb-items %}
+{{ block.super }}
+<li class="breadcrumb-item"><a href="{% url 'inspector-user-list' %}">Users</a></li>
+<li class="breadcrumb-item" aria-current="page">{{ user.name }}</li>
+{% endblock %}
+
+{% block content %}
+<h1>{{ user.name }}</h1>
+
+<ul class="list-unstyled ml-10">
+
+  <li>
+    Registered:
+    <strong title="{{ user.created_at }}">{{ user.created_at|naturaltime }}</strong>
+  </li>
+
+  <li>
+    Last logged in:
+    <strong>{{ user.last_login|naturaltime }}</strong>
+  </li>
+
+  <li>
+    Ticket?
+    <strong>No</strong>
+  </li>
+
+</ul>
+
+{% if user.proposals.exists %}
+<h2>Proposals</h2>
+
+<ul class="list-unstyled">
+  {% for proposal in user.proposals.all %}
+  <li>
+    <div>
+      <i>{{ proposal.full_title }}</i>
+      <p>{{ proposal.description }}</p>
+      <p>{{ proposal.description_private }}</p>
+
+      <hr />
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock content %}

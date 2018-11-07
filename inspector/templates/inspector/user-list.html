@@ -1,0 +1,38 @@
+{% extends "inspector/base.html" %}
+
+{% block breadcrumb-items %}
+{{ block.super }}
+<li class="breadcrumb-item" aria-current="page">Users</li>
+{% endblock %}
+
+{% block content %}
+
+<div class="mb-4">
+  <h4>Change Ordering</h4>
+
+  <a class="btn btn-primary" href="{% url 'inspector-user-list' %}?ordering=name">Name (ASC)</a>
+  <a class="btn btn-primary" href="{% url 'inspector-user-list' %}?ordering=-name">Name (DESC)</a>
+  <a class="btn btn-primary" href="{% url 'inspector-user-list' %}?ordering=created_at">Date Registered (ASC)</a>
+  <a class="btn btn-primary" href="{% url 'inspector-user-list' %}?ordering=-created_at">Date Registered (DESC)</a>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Ticket?</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in object_list %}
+    <tr>
+      <td>{{ user.name }}</td>
+      <td>No</td>
+      <td><a class="btn btn-info" href="{% url 'inspector-user-detail' pk=user.id %}">View</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}

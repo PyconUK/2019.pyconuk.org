@@ -1,0 +1,30 @@
+{% extends "inspector/base.html" %}
+
+{% block content %}
+<div class="row">
+  <div class="col">
+
+    <form action="{% url 'inspector-search-results' %}" method="GET">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="search">Search for Users</label>
+        <input type="search" name="q" id="search" class="form-control" placeholder="Enter a name, email, or ID" autofocus />
+
+        <button type="submit" class="btn btn-primary btn-lg mt-4 pull-right">Search</button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+<hr />
+
+<div class="row">
+  <div class="col">
+    <a class="btn btn-danger" href="">Email Accepted Proposers who don't have a Ticket</a>
+
+  </div>
+</div>
+{% endblock content %}

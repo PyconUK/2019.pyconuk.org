@@ -1,0 +1,26 @@
+{% extends "inspector/base.html" %}
+
+{% block breadcrumb-items %}
+{{ block.super }}
+<li class="breadcrumb-item" aria-current="page">Search Results</li>
+{% endblock %}
+
+{% block content %}
+
+<p>Search results for "{{ q }}":</p>
+
+{% for name, items in results.items %}
+<h1>{{ name|pluralize }}</h2>
+
+<ul class="list-unstyled">
+  {% for item in items %}
+  <li>
+    <a href="{% url item.details_url pk=item.id %}">{{ item }}</a>
+  </li>
+  {% empty %}
+  <li>No results found.</li>
+  {% endfor %}
+</ul>
+{% endfor %}
+
+{% endblock content %}

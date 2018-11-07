@@ -43,6 +43,7 @@ ALLOWED_HOSTS = ["localhost", "2019.pyconuk.org"]
 INSTALLED_APPS = [
     "pyconuk",
     "cfp",
+    "inspector",
     "whitenoise",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.humanize",
     "debug_toolbar",
     "bootstrap4",
 ]
