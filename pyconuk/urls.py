@@ -29,6 +29,11 @@ urlpatterns = [
             url=staticfiles_storage.url("crown_black.svg"), permanent=False
         ),
     ),
+    path(
+        "call-for-proposals",
+        TemplateView.as_view(template_name="cfp/call-for-proposals.html"),
+        name="call-for-proposals",
+    ),
     path("coc", TemplateView.as_view(template_name="coc.html"), name="coc"),
     path(
         "coc/reporting-guidelines",
@@ -58,6 +63,7 @@ urlpatterns = [
         name="profile",
     ),
     path("profile/edit", ProfileEdit.as_view(), name="profile-edit"),
+    path("proposals/", include("cfp.urls")),
     path(
         "schedule", TemplateView.as_view(template_name="schedule.html"), name="schedule"
     ),

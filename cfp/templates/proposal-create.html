@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load bootstrap4 %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+  <div class="col">
+    <h1>New proposal</h1>
+    <hr>
+    <p>PyCon UK is a community conference, and we're looking for proposals of all sorts for talks, workshops, posters — or anything else — from all parts of the community.</p>
+
+    <p><a href="{% url 'call-for-proposals' %}">Read more about our Call for Proposals</a>.</p>
+
+    <p>The Call for Proposals will close at 1200 BST on June 15th.</p>
+    <hr>
+    {% if not request.user.is_authenticated %}
+        <p>Please <a href="{% url 'register' %}?next={{ request.path }}">sign up</a> or <a href="{% url 'login' %}?next={{ request.path }}">sign in</a> to make a submission.</p>
+    {% else %}
+        {% include 'proposal-form.html' %}
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'cfp/cfp_form.js' %}"></script>
+{% endblock %}

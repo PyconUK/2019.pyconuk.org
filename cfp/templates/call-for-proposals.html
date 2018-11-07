@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+
+  <div class="row">
+
+    <div class="col  col-md-8 ml-md-auto mr-md-auto col-lg-6 ml-lg-auto mr-lg-auto">
+
+      <p>We're ready for your proposals on any Python-related topic.</p>
+
+      <div class="my-4">
+        <a href="{% url 'proposals-create' %}" class="btn btn-warning btn-block">Submit your proposal</a>
+      </div>
+
+      <p>We welcome proposals from <strong>everyone</strong>. You don't need to be an expert, or an expert speaker. Below you can find about what kind of proposals we're seeking, but if you're in any doubt whether you should, please see...</p>
+
+      <div class="my-4">
+        <a href="/call-proposals/why-you-should-submit-proposal/" class="btn btn-danger btn-block">Why you should submit a proposal</a>
+      </div>
+
+      <p>The call for proposals is open until <strong>midday 15th June</strong>; selections will be made by 30th June.</p>
+
+      <div class="my-4">
+        <a href="{% url 'cfp-submission-advice' %}" class="btn btn-warning btn-block">How to submit a more successful proposal</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="card-deck">
+
+    <div class="card bg-primary">
+
+      <div class="card-header">
+        <h2>Talks</h2>
+      </div>
+
+      <img src="https://pyconuk2018-live-2274efde3f58435f9e5bd9-06e68bb.divio-media.net/filer_public_thumbnails/filer_public/70/2f/702f8191-1e50-4fe0-b41f-6431c88cb699/mikey_talk.jpg__800x533_q90_subject_location-571%2C316_subsampling-2.jpg" class="img-fluid">
+
+      <div class="card-body">
+        <p><strong>Speak to the wonderful PyCon UK audience!</strong> Most talk slots are around 25 minutes, with some longer slots available in the schedule.</p>
+      </div>
+
+    </div>
+
+    <div class="card bg-danger">
+
+      <div class="card-header">
+        <h2>Workshops</h2>
+      </div>
+
+      <img src="https://pyconuk2018-live-2274efde3f58435f9e5bd9-06e68bb.divio-media.net/filer_public_thumbnails/filer_public/95/45/95452448-c2c1-428d-9afd-efba1669f819/pycon4_mh20171029_93.jpg__800x533_q90_subject_location-400%2C267_subsampling-2.jpg" class="img-fluid">
+
+      <div class="card-body">
+        <p><strong>Share something you know!</strong> Workshops are longer hands-on sessions with small groups. Most workshops will be between 90 and 180 minutes long.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="card-deck">
+
+    <div class="card bg-warning">
+
+      <div class="card-header">
+        <h2>Sprints</h2>
+      </div>
+
+      <img src="https://pyconuk2018-live-2274efde3f58435f9e5bd9-06e68bb.divio-media.net/filer_public_thumbnails/filer_public/24/b2/24b2b67c-ae15-4251-a441-601cae24dbc7/2017_112.jpg__1024x683_q90_subsampling-2.jpg" class="img-fluid">
+
+      <div class="card-body">
+        <p><strong>Lead a code sprint to improve an open-source project!</strong> Whether it's new, old, simple or complex, if you'd like to find and work with collaborators to make it better, tell us about it.</p>
+      </div>
+
+    </div>
+
+    <div class="card bg-primary">
+
+      <div class="card-header">
+        <h2>Posters</h2>
+      </div>
+
+      <img src="https://pyconuk2018-live-2274efde3f58435f9e5bd9-06e68bb.divio-media.net/filer_public_thumbnails/filer_public/f8/66/f86605a0-d583-47d1-8e33-917406249cab/pycon3_mh20171028_81.jpg__800x533_q90_subject_location-400%2C267_subsampling-2.jpg" class="img-fluid">
+
+      <div class="card-body">
+        <p><strong>Present your work on a poster!</strong> In one the of the lunchtime sessions, attendees will be coming to see all the posters and talk to the presenters about their work, projects and ideas.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="card-deck">
+
+    <div class="card bg-danger">
+
+      <div class="card-header">
+        <h2>Other ideas</h2>
+      </div>
+
+      <div class="card-body">
+        <p><strong>Your idea goes here!</strong> If you have something Python-related that you'd like to share, we'd love to know about it.</p>
+      </div>
+
+    </div>
+
+    <div class="card bg-warning">
+      <div class="card-body">
+        <p>The deadline for submissions is midday 15th June - but don't leave it until then. Selections will be made by 30th June.</p>
+        <a href="{% url 'proposals-create' %}" class="btn btn-warning btn-lg btn-block">Submit your proposal</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock content %}

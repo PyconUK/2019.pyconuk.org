@@ -42,6 +42,7 @@ ALLOWED_HOSTS = ["localhost", "2019.pyconuk.org"]
 
 INSTALLED_APPS = [
     "pyconuk",
+    "cfp",
     "whitenoise",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -183,3 +184,4 @@ sentry_sdk.init(dsn=env("SENTRY_DSN", default=None), integrations=[DjangoIntegra
 # Closing times
 closing_time = functools.partial(get_closing_time, env)
 BADGE_EDITING_CLOSE_AT = closing_time("BADGE_EDITING_CLOSE_AT")
+CFP_CLOSE_AT = closing_time("CFP_CLOSE_AT")

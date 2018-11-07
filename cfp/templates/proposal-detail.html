@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+  <div class="col">
+    <h1>[{{ proposal.id }}] {{ proposal.full_title }}</h1>
+
+    {% if not proposal.session_type == 'other' %}
+    <hr />
+    <div>This is a proposal for {{ proposal.get_session_type_display }}.</div>
+    {% endif %}
+
+    <hr />
+
+    <div class="card bg-warning text-dark">
+      <div class="card-header"><h2>Proposal details</h2></div>
+      <div class="card-body">
+
+        <h4>Description</h4>
+        <div>{{ proposal.description|linebreaks }}</div>
+
+        {% if proposal.description_private %}
+        <hr />
+        <h4>Private Description</h4>
+        <div>{{ proposal.description_private|linebreaks }}</div>
+        {% endif %}
+
+        {% if proposal.outline %}
+        <hr />
+        <h4>Outline</h4>
+        <div>{{ proposal.outline|linebreaks }}</div>
+        {% endif %}
+
+        {% if proposal.equipment %}
+        <hr />
+        <h4>Equipment</h4>
+        <div>{{ proposal.equipment|linebreaks }}</div>
+        {% endif %}
+
+        {% if proposal.aimed_at_new_programmers or proposal.aimed_at_teachers or proposal.aimed_at_data_scientists or proposal.would_like_mentor or proposal.would_like_longer_slot %}
+        <hr />
+        {% endif %}
+
+        <ul>
+          {% if proposal.aimed_at_new_programmers %}
+          <li>This talk is suitable for new programmers.</li>
+          {% endif %}
+
+          {% if proposal.aimed_at_teachers %}
+          <li>This talk is suitable for teachers.</li>
+          {% endif %}
+
+          {% if proposal.aimed_at_data_scientists %}
+          <li>This talk is suitable for data scientists.</li>
+          {% endif %}
+
+          {% if proposal.would_like_mentor %}
+          <li>You have requested assistance from a mentor.</li>
+          {% endif %}
+
+          {% if proposal.would_like_longer_slot %}
+          <li>You have requested a longer talk slot if available.</li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+
+
+    {% if proposal.state == 'accept' %}
+      <form action="{% url 'proposals-confirm' proposal.id %}" method="post">
+        {% csrf_token %}
+        <p>Your proposal has been accepted for PyCon UK 2018! Please confirm you will be attending the conference and presenting it by clicking the button below.</p>
+        <p>Please remember that you need to have a ticket, either through financial assistance or purchased yourself.</p>
+        <button type="submit" class="btn btn-primary">Confirm your proposal</button>
+      </form>
+    {% endif %}
+
+    {% if is_cfp_open %}
+    <a href="{% url 'proposals-edit' proposal.id %}" class="btn btn-primary">Update your proposal</a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
+
