@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "46718e9d6666090a1cfaa1161666356d2a5392deae5f3b2ae8966da84ea9246c"
+            "sha256": "6e46d7a8efa621a732583bd8d8d0e607625340e7ab5316f8e9c60b4fd2a05484"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -61,6 +61,14 @@
             ],
             "index": "pypi",
             "version": "==19.9.0"
+        },
+        "incuna-mail": {
+            "hashes": [
+                "sha256:1ae27a738fefa2ae2e6daf32ac5874ea6e030fcf619d153e228eac1a1e32969a",
+                "sha256:f928e0a402584f4fd17c7786cd44494ffb1d79f2a0858f041e9ff46cba70932d"
+            ],
+            "index": "pypi",
+            "version": "==4.0.0"
         },
         "psycopg2-binary": {
             "hashes": [

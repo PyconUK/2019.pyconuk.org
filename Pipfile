@@ -13,6 +13,7 @@ django-debug-toolbar = "*"
 whitenoise = "*"
 gunicorn = "*"
 "django-bootstrap4" = "*"
+incuna-mail = "*"
 
 [dev-packages]
 black = "*"

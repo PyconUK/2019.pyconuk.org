@@ -174,6 +174,12 @@ AUTH_USER_MODEL = "pyconuk.User"
 MESSAGE_TAGS = {constants.ERROR: "danger"}
 
 
+# Email
+# https://docs.djangoproject.com/en/2.1/topics/email/
+if DEBUG:
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+
 # THIRD PARTY APPS
 # Debug Toolbar
 INTERNAL_IPS = ["127.0.0.1"]
